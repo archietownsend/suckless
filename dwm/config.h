@@ -3,8 +3,8 @@
 #include <X11/XF86keysym.h>
 
 /* Constants */
-#define TERMINAL "st"
-#define TERMCLASS "st"
+#define TERMINAL "alacritty"
+#define TERMCLASS "alacritty"
 #define BROWSER "brave"
 
 /* appearance */
