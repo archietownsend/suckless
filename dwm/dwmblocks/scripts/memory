@@ -1,2 +1,0 @@
-#!/bin/sh
-free -t | awk 'FNR == 2 {printf("MEM:%.0f%%"), $3/$2*100}'
