@@ -2,9 +2,9 @@
 static const Block blocks[] = {
 	/*Icon*/	/*Command*/				/*Update Interval*/	/*Update Signal*/
 	/* {"",        	"scripts/memory",               		5,               	14},
-	{"", 		"scripts/cpu",					5,			1}, */
+	{"", 		"scripts/cpu",					5,			1}, 
 	{"",		"scripts/internet",				5,			4},
-	{"",		"scripts/battery",				5,			3},
+	{"",		"scripts/battery",				5,			3}, */
 	{"",		"scripts/volume",				0,			10},
 	{"", 		"date '+%H:%M %d/%m/%Y'",			1,			1},
 };
