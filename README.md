@@ -8,5 +8,4 @@ My build of dwm & dwmblocks.
 - statusallmons (status bar to all monitors)
 - uselessgap (gaps to windows)
 - grid layout
-- hide vacant tags (hides unused tags)
 - scratchpads
