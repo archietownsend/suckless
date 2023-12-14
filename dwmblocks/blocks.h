@@ -6,9 +6,9 @@ static const Block blocks[] = {
 	{"",		"scripts/internet",				5,			4},
 	{"",		"scripts/battery",				5,			3},
 	{"",		"scripts/volume",				0,			10},
-	{"", 		"date '+%H:%M | %d/%m/%Y'",			1,			1},
+	{"", 		"date '+%H:%M %d/%m/%Y'",			1,			1},
 };
 
 //sets delimeter between status commands. NULL character ('\0') means no delimeter.
-static char delim[] = " | ";
+static char delim[] = " ";
 static unsigned int delimLen = 5;
