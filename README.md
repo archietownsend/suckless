@@ -9,3 +9,4 @@ My build of dwm & dwmblocks.
 - uselessgap (gaps to windows)
 - grid layout
 - hide vacant tags (hides unused tags)
+- scratchpads
