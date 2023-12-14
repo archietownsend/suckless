@@ -5,7 +5,12 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "hack:pixelsize=14:antialias=true:autohint=true";
+static char *font = "JetBrainsMono Nerd Font:pixelsize=14:antialias=true:autohint=true";
+/* Spare fonts */
+static char *font2[] = {
+       "JetBrainsMono Nerd Font:pixelsize=14:antialias=true:autohint=true",
+};
+
 static int borderpx = 2;
 
 /*
@@ -93,67 +98,55 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
+/* bg opacity */
+float alpha = 0.7;
+
 /* Terminal colors (16 first used in escape sequence) */
-
 static const char *colorname[] = {
-	/* 8 normal colors */
-	
-    "#171717",
-    "#aa4450",
-	"#719611",
-	"#b8b8b8",
-	"#5f87af",
-	"#8f6f8f",
-	"#528b8b",
-	"#b8b8b8",
 
-	/* 8 bright colors */
-	"#1e1919",
-	"#bc0b12",
-	"#c0c0a2",
-	"#b8b8b8",
-	"#6688aa",
-	"#6e4e71",
-	"#b8b8b8",
-    "#eeeeee",
+  /* 8 normal colors */
+  [0] = "#002b36", /* black   */
+  [1] = "#dc322f", /* red     */
+  [2] = "#859900", /* green   */
+  [3] = "#b58900", /* yellow  */
+  [4] = "#268bd2", /* blue    */
+  [5] = "#6c71c4", /* magenta */
+  [6] = "#2aa198", /* cyan    */
+  [7] = "#93a1a1", /* white   */
 
-	[255] = 0,
+  /* 8 bright colors */
+  [8]  = "#657b83", /* black   */
+  [9]  = "#dc322f", /* red     */
+  [10] = "#859900", /* green   */
+  [11] = "#b58900", /* yellow  */
+  [12] = "#268bd2", /* blue    */
+  [13] = "#6c71c4", /* magenta */
+  [14] = "#2aa198", /* cyan    */
+  [15] = "#fdf6e3", /* white   */
 
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#626262",
-	"#000000",
+  /* special colors */
+  [256] = "#272727", /* background */
+  [257] = "#ffffff", /* foreground */
 };
+
 
 /*
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 3;
-unsigned int defaultbg = 0;
-static unsigned int defaultcs = 256;
+unsigned int defaultfg = 257;
+unsigned int defaultbg = 256;
+unsigned int defaultcs = 257;
 static unsigned int defaultrcs = 257;
 
 /*
- * https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h4-Functions-using-CSI-_-ordered-by-the-final-character-lparen-s-rparen:CSI-Ps-SP-q.1D81
- * Default style of cursor
- * 0: Blinking block
- * 1: Blinking block (default)
- * 2: Steady block ("█")
- * 3: Blinking underline
- * 4: Steady underline ("_")
- * 5: Blinking bar
- * 6: Steady bar ("|")
- * 7: Blinking st cursor
- * 8: Steady st cursor
+ * Default shape of cursor
+ * 2: Block ("█")
+ * 4: Underline ("_")
+ * 6: Bar ("|")
+ * 7: Snowman ("☃")
  */
-static unsigned int cursorstyle = 5;
-static Rune stcursor = 0x2603; /* snowman (U+2603) */
-
-/*
- * Whether to use pixel geometry or cell geometry
- */
-
-static Geometry geometry = CellGeometry;
+static unsigned int cursorshape = 2;
 
 /*
  * Default columns and rows numbers
@@ -161,13 +154,6 @@ static Geometry geometry = CellGeometry;
 
 static unsigned int cols = 80;
 static unsigned int rows = 24;
-
-/*
- * Default width and height (including borders!)
- */
-
-static unsigned int width = 564;
-static unsigned int height = 364;
 
 /*
  * Default colour and shape of the mouse cursor
@@ -193,11 +179,8 @@ static uint forcemousemod = ShiftMask;
  * Internal mouse shortcuts.
  * Beware that overloading Button1 will disable the selection.
  */
-const unsigned int mousescrollincrement = 1;
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
-	{ XK_ANY_MOD,           Button4, kscrollup,      {.i = mousescrollincrement},      0, /* !alt */ -1 },
-	{ XK_ANY_MOD,           Button5, kscrolldown,    {.i = mousescrollincrement},      0, /* !alt */ -1 },
 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
 	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
@@ -223,8 +206,6 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 };
 
 /*
