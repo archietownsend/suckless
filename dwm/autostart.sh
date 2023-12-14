@@ -1,5 +1,5 @@
 #!/bin/sh
-brave &
+# brave &
 feh --bg-fill ~/.wallpaper.png &
 cd ~/suckless/dwmblocks && ./dwmblocks &
 picom &
