@@ -1,6 +1,6 @@
 #!/bin/sh
 brave &
-feh --bg-fill ~/.wallpaper.png &
+feh --bg-fill ~/.wallpaper.jpg &
 cd ~/suckless/dwmblocks && ./dwmblocks &
 picom &
 wpctl set-mute @DEFAULT_AUDIO_SINK@ 1 &
