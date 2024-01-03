@@ -5,4 +5,5 @@ cd ~/suckless/dwmblocks && ./dwmblocks &
 picom &
 wpctl set-mute @DEFAULT_AUDIO_SINK@ 1 &
 wpctl set-volume @DEFAULT_AUDIO_SINK@ 100% &
-numlockx
+numlockx &
+wmname LG3D
