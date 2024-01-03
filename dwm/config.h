@@ -36,7 +36,6 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class                                        instance               title                           tags mask     isfloating   monitor */
-	{ "Gimp",                                       NULL,                  NULL,                            0,            1,           -1 },
 	{ "Brave-browser",                              "brave-browser",       "Manage: Time Entry - Brave",    0,            1,           -1 },
 /*	{ "net-sourceforge-jnlp-runtime-Boot",          NULL,                  NULL,                            0,            1,           -1 },
 	{ "java-lang-Thread",          			NULL,                  NULL,                            0,            1,           -1 },*/
