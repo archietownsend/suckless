@@ -1,8 +1,8 @@
-# Archie's suckless software.
+# Archie's suckless software
 My fork of dwm, dmenu, st and dwmblocks. 
 ![Screenshot](screenshot.png "Screenshot")
 
-# Info
+# info
 colourschemes generated from Pywal apply to all.
 
 # dwm patches used
@@ -13,7 +13,7 @@ colourschemes generated from Pywal apply to all.
 - grid layout
 - scratchpads
 - dwm-6.2-urg-border (urgent border colors needed for pywall)
-- warp - moves cursor to selected window
+- warp (moves cursor to selected window)
 
 # st patches used
  - scrollback
