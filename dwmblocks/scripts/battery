@@ -33,4 +33,5 @@ if [ -e "/sys/class/power_supply/BAT0" ]; then
     fi
     echo "$batstat $battery%"
 else
+	echo ""
 fi
