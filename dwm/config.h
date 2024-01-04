@@ -1,6 +1,7 @@
 /* Archie's DWM config */
 /* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
+#include "/home/archie/.cache/wal/colors-wal-dwm.h"
 
 /* Constants */
 #define TERMINAL "st"
@@ -15,17 +16,11 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char dmenufont[]       = "JetBrainsMono Nerd Font:hack:size=10";
 static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=10", "Symbols Nerd Font:size=10" };
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
-static const char col_accent[]	    = "#c1584e";
-static const char *colors[][3]      = {
-	/*               fg         bg         border   */
+/*static const char *colors[][3]      = {
+               fg         bg         border   
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_gray1,  col_accent  },
-};
+};*/
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
