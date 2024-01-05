@@ -45,7 +45,7 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 #include "layouts.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[T]=",      tile },   	/* tilling layout */
+	{ "[T]",      tile },   	/* tilling layout */
 	{ "[F]",      NULL },   	/* floating layout */
 	{ "[M]",      monocle },	/* monocle layout */
 	{ "[G]",      grid },		/* grid layout */
