@@ -12,6 +12,7 @@
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int gappx     = 6;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char dmenufont[]       = "JetBrainsMono Nerd Font:hack:size=10";
@@ -30,11 +31,12 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class                                        instance               title                           tags mask     isfloating   monitor */
-	{ "Brave-browser",                              "brave-browser",       "Manage: Time Entry - Brave",    0,            1,           -1 },
-/*	{ "net-sourceforge-jnlp-runtime-Boot",          NULL,                  NULL,                            0,            1,           -1 },
-	{ "java-lang-Thread",          			NULL,                  NULL,                            0,            1,           -1 },*/
-};
+       /* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
+       { "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
+       { "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
+       { "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
+       { NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+ };
 
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
