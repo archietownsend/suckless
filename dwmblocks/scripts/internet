@@ -1,32 +1,26 @@
 #!/bin/sh
+
 case $BLOCK_BUTTON in
-        1) "$TERMINAL" -e nmtui; pkill -RTMIN+4 dwmblocks ;;
-        3) notify-send " Internet module" "\- Click to connect
-: wifi disabled
-󰖪 no wifi connection
-: wifi connection with quality
-: ethernet active
-: vpn active
-" ;;
-        6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+    1)
+        "$TERMINAL" -e nmtui
+        pkill -RTMIN+4 dwmblocks
+        ;;
+    6)
+        "$TERMINAL" -e "$EDITOR" "$0"
+        ;;
 esac
 
 # Wifi
 if [ "$(cat /sys/class/net/w*/operstate 2>/dev/null)" = 'up' ] ; then
-        wifiicon="$(awk '/^\s*w/ { print " " int($3 * 100 / 70) "%" }' /proc/net/wireless)"
+    printf " %s%%" "$(awk '/^\s*w/ { print int($3 * 100 / 70) }' /proc/net/wireless)"
 elif [ "$(cat /sys/class/net/w*/operstate 2>/dev/null)" = 'down' ] ; then
-        [ "$(cat /sys/class/net/w*/flags 2>/dev/null)" = '0x1003' ] && wifiicon="" || wifiicon=" "
+    [ "$(cat /sys/class/net/w*/flags 2>/dev/null)" = '0x1003' ] && printf "" || printf " "
 fi
 
 # Ethernet
-if [ "$(cat /sys/class/net/e*/operstate 2>/dev/null)" = 'up' ] ; then
-    ethericon=""
-else
-    ethericon=""
-fi
+[ "$(cat /sys/class/net/e*/operstate 2>/dev/null)" = 'up' ] && printf "" || printf ""
 
 # TUN
-[ -n "$(cat /sys/class/net/tun*/operstate 2>/dev/null)" ] && tunicon=" " || tunicon=""
+[ -n "$(cat /sys/class/net/tun*/operstate 2>/dev/null)" ] && printf " " || printf ""
 
-printf "%s%s%s\n" "$wifiicon" "$ethericon" "$tunicon"
-
+echo
