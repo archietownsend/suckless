@@ -1,9 +1,9 @@
 #!/bin/sh
-brave &
-xwallpaper --zoom .wallpaper.jpg &
-wal -n -i $HOME/.wallpaper.jpg &
-wpctl set-volume @DEFAULT_AUDIO_SINK@ 100% &
-cd ~/suckless/dwmblocks && ./dwmblocks &
-picom &
-numlockx &
-wmname LG3D
+#brave &
+#wpctl set-volume @DEFAULT_AUDIO_SINK@ 100% &
+xwallpaper --zoom .wallpaper.jpg & #set wallpaper
+wal -n -i $HOME/.wallpaper.jpg & #set colour scheme to be from .wallpaper
+cd ~/suckless/dwmblocks && ./dwmblocks & #run dwmblocks
+picom & #run picom
+numlockx & #enable numlock
+wmname LG3D #spoof wm name
