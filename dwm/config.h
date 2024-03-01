@@ -75,8 +75,8 @@ static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34
 static const Key keys[] = {
         /* modifier                     key        function        argument */
         { MODKEY,                       XK_e,      spawn,			SHCMD("slock") },
-        { MODKEY|ShiftMask,             XK_n,      spawn,			SHCMD(TERMINAL " -e lf") },
-        { MODKEY,            	        XK_n,      spawn,			SHCMD("thunar") },
+        { MODKEY,	                XK_n,      spawn,			SHCMD(TERMINAL " -e lf") },
+        { MODKEY|ShiftMask,             XK_n,      spawn,			SHCMD("thunar") },
         { MODKEY,                       XK_w,      spawn,			SHCMD(BROWSER) },
         { MODKEY|ShiftMask,             XK_w,      spawn,			SHCMD(BROWSER " --incognito") },
         { MODKEY,                       XK_space,  spawn,			{.v = dmenucmd } },
