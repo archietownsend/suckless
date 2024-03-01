@@ -6,8 +6,8 @@ My patched verisons of these suckless tools:
 - dwmblocks
 - slock 
 ![Screenshot](screenshot.png "Screenshot")
-# info
-Colourschemes generated from Pywal applies to st, dmenu and dwm.
+# Info
+Using xresources a colourscheme will be applied to all programs.
 # dwm patches
 - alwayscenter (centre floating windows)
 - autostart (runs autostart.sh on startup)
@@ -22,5 +22,9 @@ Colourschemes generated from Pywal applies to st, dmenu and dwm.
  - scrollback
  - alpha (transparency)
  - xresources
-# scripts
-Some of the scripts from this repo have been copied and then altered from [Luke Smith](https://github.com/lukesmithxyz) and [Jake@Linux](https://github.com/jdpedersen1).
+# slock patches
+- capscolor
+- xresources
+# Credits
+- Some of the scripts from this repo have been copied and altered from [Luke Smith](https://github.com/lukesmithxyz) and [Jake@Linux](https://github.com/jdpedersen1).
+- I used [Shourai's ST build]https://github.com/Shourai/st as a starting base
