@@ -71,10 +71,10 @@ static const char *termcmd[]  = { TERMINAL, NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 
-
 static const Key keys[] = {
         /* modifier                     key        function        argument */
         { MODKEY,                       XK_e,      spawn,			SHCMD("slock") },
+        { MODKEY|ShiftMask,             XK_e,      spawn,			SHCMD("sh ~/.dwm/scripts/powermenu")},
         { MODKEY,	                XK_n,      spawn,			SHCMD(TERMINAL " -e lfub") },
         { MODKEY,                       XK_w,      spawn,			SHCMD(BROWSER) },
         { MODKEY|ShiftMask,             XK_w,      spawn,			SHCMD(BROWSER " --incognito") },
@@ -102,6 +102,9 @@ static const Key keys[] = {
         { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
         { MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
         { MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+        { 0,XK_F2,         spawn,	   SHCMD("sh ~/.dwm/scripts/mounter")},
+        { 0,XK_F3,         spawn,	   SHCMD("sh ~/.dwm/scripts/unmounter")},
+        { 0,XK_F1,         spawn,	   SHCMD("sh ~/.dwm/scripts/displayselect")},
         { MODKEY,                       XK_0,      view,           {.ui = ~0 } },
         TAGKEYS(                        XK_1,                      0)
         TAGKEYS(                        XK_2,                      1)
