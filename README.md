@@ -1,5 +1,4 @@
-# Archie's suckless software
-All my patched verisons of suckless software.
+# Archie's patched suckless software
 ![Screenshot](screenshot.png "Screenshot")
 # Info
 Using xresources a colourscheme will be applied to all programs.
