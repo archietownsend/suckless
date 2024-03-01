@@ -23,4 +23,4 @@ Colourschemes generated from Pywal applies to st, dmenu and dwm.
  - alpha (transparency)
  - xresources
 # scripts
-Some of the scripts from this repo have been copied and then altered from [Luke Smith](https://github.com/lukesmithxyz) and Jake@Linux(https://github.com/jdpedersen1).
+Some of the scripts from this repo have been copied and then altered from [Luke Smith](https://github.com/lukesmithxyz) and [Jake@Linux](https://github.com/jdpedersen1).
