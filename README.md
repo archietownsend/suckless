@@ -1,10 +1,5 @@
 # Archie's suckless software
-My patched verisons of these suckless tools:
-- dwm
-- dmenu 
-- st
-- dwmblocks
-- slock 
+All my patched verisons of suckless software.
 ![Screenshot](screenshot.png "Screenshot")
 # Info
 Using xresources a colourscheme will be applied to all programs.
