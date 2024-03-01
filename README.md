@@ -1,11 +1,14 @@
 # Archie's suckless software
-My patched verisons of dwm, dmenu, st and dwmblocks. 
+My patched verisons of these suckless tools:
+- dwm
+- dmenu 
+- st
+- dwmblocks
+- slock 
 ![Screenshot](screenshot.png "Screenshot")
-
 # info
 Colourschemes generated from Pywal applies to st, dmenu and dwm.
-
-# dwm patches used
+# dwm patches
 - alwayscenter (centre floating windows)
 - autostart (runs autostart.sh on startup)
 - statusallmons (status bar to all monitors)
@@ -15,8 +18,7 @@ Colourschemes generated from Pywal applies to st, dmenu and dwm.
 - dwm-6.2-urg-border (urgent border colors needed for pywall)
 - warp (moves cursor to selected window)
 - swallow (hides terminal when opening applications, like mpv)
-
-# st patches used
+# st patches
  - scrollback
  - alpha (transparency)
  - xresources
