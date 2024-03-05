@@ -33,7 +33,6 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
        /* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-       { "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
        { "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
        { NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
  };
@@ -74,7 +73,7 @@ static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34
 static const Key keys[] = {
         /* modifier                     key        function        argument */
         { MODKEY,                       XK_e,      spawn,	   SHCMD("slock") },
-        { MODKEY|ShiftMask,             XK_e,      spawn,	   SHCMD("sh ~/.dwm/scripts/powermenu")},
+        { MODKEY|ShiftMask,             XK_e,      spawn,	   SHCMD("sh ~/suckless/scripts/powermenu")},
         { MODKEY,	        	XK_n,      spawn,	   SHCMD(TERMINAL " -e lfub") },
         { MODKEY|ShiftMask,	        XK_n,      spawn,	   SHCMD(TERMINAL " -e newsboat") },
         { MODKEY,                       XK_w,      spawn,	   SHCMD(BROWSER) },
@@ -99,13 +98,13 @@ static const Key keys[] = {
         { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
         { MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
         { MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-        { 0,         			XK_Print,  spawn,	   SHCMD("sh ~/.dwm/scripts/screenshot") },
+        { 0,         			XK_Print,  spawn,	   SHCMD("sh ~/suckless/scripts/screenshot") },
 	{ 0, XF86XK_AudioMute,		spawn,	   SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioLowerVolume,	spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%+ && wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioRaiseVolume,	spawn,	   SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%- && wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%+; kill -44 $(pidof dwmblocks)") },
-        { 0,XK_F2,         		spawn,	   SHCMD("sh ~/.dwm/scripts/mounter")},
-        { 0,XK_F3,         		spawn,	   SHCMD("sh ~/.dwm/scripts/unmounter")},
-        { 0,XK_F1,         		spawn,	   SHCMD("sh ~/.dwm/scripts/displayselect")},
+        { 0,XK_F2,         		spawn,	   SHCMD("sh ~/suckless/scripts/mounter")},
+        { 0,XK_F3,         		spawn,	   SHCMD("sh ~/suckless/scripts/unmounter")},
+        { 0,XK_F1,         		spawn,	   SHCMD("sh ~/suckless/scripts/displayselect")},
         { MODKEY,                       XK_0,      view,           {.ui = ~0 } },
         TAGKEYS(                        XK_1,                      0)
         TAGKEYS(                        XK_2,                      1)
