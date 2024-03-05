@@ -18,7 +18,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char dmenufont[]       = "JetBrainsMono Nerd Font:hack:size=10";
 static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=10", "Symbols Nerd Font:size=10" };
 /*static const char *colors[][3]      = {
-               fg         bg         border   
+               fg         bg         border
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_gray1,  col_accent  },
 };*/
@@ -75,7 +75,8 @@ static const Key keys[] = {
         /* modifier                     key        function        argument */
         { MODKEY,                       XK_e,      spawn,	   SHCMD("slock") },
         { MODKEY|ShiftMask,             XK_e,      spawn,	   SHCMD("sh ~/.dwm/scripts/powermenu")},
-        { MODKEY,	                XK_n,      spawn,	   SHCMD(TERMINAL " -e lfub") },
+        { MODKEY,	        	XK_n,      spawn,	   SHCMD(TERMINAL " -e lfub") },
+        { MODKEY|ShiftMask,	        XK_n,      spawn,	   SHCMD(TERMINAL " -e newsboat") },
         { MODKEY,                       XK_w,      spawn,	   SHCMD(BROWSER) },
         { MODKEY|ShiftMask,             XK_w,      spawn,      	   SHCMD(BROWSER " --incognito") },
         { MODKEY,                       XK_space,  spawn,	   {.v = dmenucmd } },
