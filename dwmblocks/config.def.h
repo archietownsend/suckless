@@ -3,7 +3,7 @@ static const Block blocks[] = {
 	/*Icon*/	/*Command*/				/*Update Interval*/	/*Update Signal*/
 	{"",        	"~/suckless/scripts/sb-memory",               	5,               	14},
 	{"", 		"~/suckless/scripts/sb-cpu",			5,			1},
-	{"",		"~/suckles/scripts/sb-internet",		5,			4},
+	{"",		"~/suckless/scripts/sb-internet",		5,			4},
 	{"",		"~/suckless/scripts/sb-battery",		5,			3},
 	{"",		"~/suckless/scripts/sb-volume",			0,			10},
 	{"", 		"date '+%H:%M %d/%m/%Y'",			1,			1},
