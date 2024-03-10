@@ -16,6 +16,7 @@ Using xresources a colourscheme will be applied to all programs.
  - scrollback
  - alpha (transparency)
  - xresources
+ - external pipe
 # slock patches
 - capscolor
 - xresources
