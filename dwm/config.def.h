@@ -99,6 +99,7 @@ static const Key keys[] = {
         { MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
         { MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
         { 0,         			XK_Print,  spawn,	   SHCMD("sh ~/suckless/scripts/screenshot") },
+        { MODKEY,       		XK_Print,  spawn,	   SHCMD("sh ~/suckless/scripts/screenshot-sel") },
 	{ 0, XF86XK_AudioMute,		spawn,	   SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioLowerVolume,	spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%+ && wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioRaiseVolume,	spawn,	   SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%- && wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%+; kill -44 $(pidof dwmblocks)") },

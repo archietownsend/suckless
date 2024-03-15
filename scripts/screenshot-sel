@@ -1,0 +1,3 @@
+#! /bin/bash
+
+mkdir -p ~/pix/screenshots && scrot -z --select --line mode=edge ~/pix/screenshots/'%d-%m-%Y-%H-%M-%S.png' -e 'xclip -selection clipboard -t image/png $f'
