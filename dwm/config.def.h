@@ -6,7 +6,7 @@
 /* Constants */
 #define TERMINAL "st"
 #define TERMCLASS "st"
-#define BROWSER "brave"
+#define BROWSER "brave --password-store=basic"
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
