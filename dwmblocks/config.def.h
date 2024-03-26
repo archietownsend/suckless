@@ -4,7 +4,7 @@ static const Block blocks[] = {
 /*	{"",        	"~/suckless/scripts/sb-memory",               	5,               	14},
 	{"", 		"~/suckless/scripts/sb-cpu",			5,			1},*/
 	{"",		"~/suckless/scripts/sb-weather",		10000,			12},
-	{"",		"~/suckless/scripts/sb-pacman",			10000,			11},
+	{"",		"~/suckless/scripts/sb-pacman",			60,			11},
 	{"",		"~/suckless/scripts/sb-internet",		5,			4},
 	{"",		"~/suckless/scripts/sb-battery",		5,			3},
 	{"",		"~/suckless/scripts/sb-volume",			0,			10},
