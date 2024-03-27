@@ -23,7 +23,7 @@
     X("sh ~/suckless/scripts/sb-internet", 5, 4)  \
     X("sh ~/suckless/scripts/sb-battery", 5, 3)  \
     X("sh ~/suckless/scripts/sb-volume", 0, 10)  \
-    X("date '+%H:%M %d/%m/%Y'", 1, 1)
+    X("sh ~/suckless/scripts/sb-date", 1, 1)
 
 
 #endif  // CONFIG_H
