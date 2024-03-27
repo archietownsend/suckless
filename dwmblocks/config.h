@@ -1,17 +1,30 @@
-//Modify this file to change what commands output to your statusbar, and recompile using the make command.
-static const Block blocks[] = {
-	/*Icon*/	/*Command*/				/*Update Interval*/	/*Update Signal*/
-/*	{"",        	"~/suckless/scripts/sb-memory",               	5,               	14},
-	{"", 		"~/suckless/scripts/sb-cpu",			5,			1},*/
-	{"",		"~/suckless/scripts/sb-weather",		10000,			12},
-	{"",		"~/suckless/scripts/sb-pacman",			60,			11},
-	{"",		"~/suckless/scripts/sb-internet",		5,			4},
-	{"",		"~/suckless/scripts/sb-battery",		5,			3},
-	{"",		"~/suckless/scripts/sb-volume",			0,			10},
-	{"", 		"date '+%H:%M %d/%m/%Y'",			1,			1},
-};
+#ifndef CONFIG_H
+#define CONFIG_H
 
-//sets delimeter between status commands. NULL character ('\0') means no delimeter.
-static char delim[] = " ";
-static unsigned int delimLen = 5;
+// String used to delimit block outputs in the status.
+#define DELIMITER " "
+
+// Maximum number of Unicode characters that a block can output.
+#define MAX_BLOCK_OUTPUT_LENGTH 45
+
+// Control whether blocks are clickable.
+#define CLICKABLE_BLOCKS 1
+
+// Control whether a leading delimiter should be prepended to the status.
+#define LEADING_DELIMITER 0
+
+// Control whether a trailing delimiter should be appended to the status.
+#define TRAILING_DELIMITER 0
+
+// Define blocks for the status feed as X(cmd, interval, signal).
+#define BLOCKS(X)         \
+    X("sh ~/suckless/scripts/sb-weather", 6000, 12)  \
+    X("sh ~/suckless/scripts/sb-pacman", 60, 11)  \
+    X("sh ~/suckless/scripts/sb-internet", 5, 4)  \
+    X("sh ~/suckless/scripts/sb-battery", 5, 3)  \
+    X("sh ~/suckless/scripts/sb-volume", 0, 10)  \
+    X("date '+%H:%M %d/%m/%Y'", 1, 1)
+
+
+#endif  // CONFIG_H
 
