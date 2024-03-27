@@ -1,7 +1,13 @@
 #!/bin/bash
 
+case $BLOCK_BUTTON in
+          1) setsid -f st -e sh -c "yes | yay" ;;
+          3) notify-send "Pacman module" "\- Left click to run avaliable updates." ;;
+          6) setsid -f st -e nvim "$0" ;;
+esac
+
 checkupdates() {
 	yay -Qu | wc -l
 }
 
-echo "$(checkupdates)   "
+echo "$(checkupdates)  "
