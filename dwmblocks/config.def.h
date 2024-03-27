@@ -18,6 +18,7 @@
 
 // Define blocks for the status feed as X(cmd, interval, signal).
 #define BLOCKS(X)         \
+    X("sh ~/suckless/scripts/sb-price btc", 60, 7)  \
     X("sh ~/suckless/scripts/sb-weather", 6000, 12)  \
     X("sh ~/suckless/scripts/sb-pacman", 60, 11)  \
     X("sh ~/suckless/scripts/sb-internet", 5, 4)  \
