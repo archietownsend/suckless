@@ -12,6 +12,7 @@ Using xresources a colourscheme will be applied to all programs.
 - dwm-6.2-urg-border (urgent border colors needed for pywall)
 - warp (moves cursor to selected window)
 - swallow (hides terminal when opening applications, like mpv)
+- statuscmd (allows dwmblocks to be clickable)
 # st patches
  - scrollback
  - alpha (transparency)
@@ -23,3 +24,7 @@ Using xresources a colourscheme will be applied to all programs.
 # Credits
 - Some of the scripts from this repo have been copied and altered from repos made by [Luke Smith](https://github.com/lukesmithxyz) and [Jake@Linux](https://github.com/jdpedersen1).
 - I used [Shourai's ST build](https://github.com/Shourai/st) as a starting base
+# To-do
+- fix spacing issues
+- update README
+- get dwmblocks to start with autostart script?
