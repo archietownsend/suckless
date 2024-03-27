@@ -2,11 +2,8 @@
 
 case $BLOCK_BUTTON in
     1)
-        "$TERMINAL" -e nmtui
+        st -e nmtui
         pkill -RTMIN+4 dwmblocks
-        ;;
-    6)
-        "$TERMINAL" -e "$EDITOR" "$0"
         ;;
 esac
 

@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # Displays today's precipication chance (☔), and daily low (🥶) and high (🌞).
-# Usually intended for the statusbar.
+# Usually intended for the statusbar
+
 
 url="${WTTRURL:-wttr.in}"
 weatherreport="${XDG_CACHE_HOME:-$HOME/.cache}/weatherreport"
@@ -34,18 +35,14 @@ readfile() { weatherdata="$(cat "$weatherreport")" ;}
 
 showweather() {
 	readfile
-	printf " %s  %s°  %s°\n" "$(getprecipchance)" $(getdailyhighlow)
+	printf " %s  %s°  %s°" "$(getprecipchance)" $(getdailyhighlow)
 }
 
 case $BLOCK_BUTTON in
-	1) "$TERMINAL" -e sh -c "less -R $HOME/.cache/weatherreport" ;;
+	1) setsid -f st -e sh -c "less -R $weatherreport" ;;
 	2) getforecast && showweather ;;
-	3) notify-send "🌈 Weather module" "\- Left click for full forecast.
-- Middle click to update forecast.
-☔: Chance of rain/snow
-🥶: Daily low
-🌞: Daily high" ;;
-	6) setsid -f "$TERMINAL" -e "$EDITOR" "$0" ;;
+	3) notify-send "🌈 Weather module" "\- Left click for full forecast." ;;
+	6) setsid -f st -e nvim "$0" ;;
 esac
 
 checkforecast || getforecast
