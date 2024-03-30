@@ -17,7 +17,7 @@
 # st patches
  - scrollback
  - alpha (transparency)
- - xresources
+ - xresources (colourscheme)
  - external pipe
 # slock patches
 - capscolor
