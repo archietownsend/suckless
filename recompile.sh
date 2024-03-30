@@ -1,7 +1,11 @@
-#!/bin/zsh
+#!/bin/bash
 
-function runCommand() {
-    for d in ./*/ ; do /bin/zsh -c "(cd "$d" && "$@")"; done
+# Function to perform actions in each subdirectory
+runCommand() {
+    for d in ./*/ ; do
+        (cd "$d" && sudo cp config.def.h config.h && sudo make clean install)
+    done
 }
 
-runCommand "sudo cp config.def.h config.h && sudo make clean install"
+# Call the function
+runCommand
