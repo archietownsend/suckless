@@ -1,7 +1,9 @@
 #!/bin/bash
 
+yay -Sy > /dev/null
+
 case $BLOCK_BUTTON in
-          1) setsid -f st -e sh -c "yes | yay" ;;
+          1) setsid -f st -e sh -c "yes | yay && kill -45 $(pidof dwmblocks)" ;;
           6) setsid -f st -e nvim "$0" ;;
 esac
 

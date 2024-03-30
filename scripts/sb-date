@@ -1,7 +1,7 @@
 #!/bin/bash
 
 case $BLOCK_BUTTON in
-        1) setsid -f st -e sh -c "cal -n 6 | less -R" ;;
+        1) setsid -f st -e sh -c "cal -n 6 | less" ;;
 esac
 
 date '+%H:%M %d/%m/%Y'

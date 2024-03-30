@@ -39,7 +39,7 @@ showweather() {
 }
 
 case $BLOCK_BUTTON in
-	1) setsid -f st -e sh -c "less -R $weatherreport" ;;
+	1) setsid -f st -e sh -c "less -fr $weatherreport" ;;
 	2) getforecast && showweather ;;
 	6) setsid -f st -e nvim "$0" ;;
 esac
