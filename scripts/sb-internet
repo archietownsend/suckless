@@ -15,7 +15,7 @@ elif [ "$(cat /sys/class/net/w*/operstate 2>/dev/null)" = 'down' ] ; then
 fi
 
 # Ethernet
-[ "$(cat /sys/class/net/e*/operstate 2>/dev/null)" = 'up' ] && printf "" || printf ""
+[ "$(cat /sys/class/net/e*/operstate 2>/dev/null)" = 'up' ] && printf " " || printf ""
 
 # TUN
 [ -n "$(cat /sys/class/net/tun*/operstate 2>/dev/null)" ] && printf " " || printf ""
