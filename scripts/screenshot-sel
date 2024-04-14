@@ -2,6 +2,4 @@
 
 time=$(date +%d-%m-%Y-%H-%M-%S)
 
-mkdir -p ~/pix/screenshots && scrot -z --select --line mode=edge ~/pix/screenshots/$time.png -e 'xclip -selection clipboard -t image/png $f'
-
-notify-send -i ~/pix/screenshots/$time.png "Screenshot taken"
+mkdir -p ~/pix/screenshots && scrot -z --select --line mode=edge ~/pix/screenshots/$time.png -e 'xclip -selection clipboard -t image/png $f' && notify-send -i ~/pix/screenshots/$time.png "Screenshot taken"
