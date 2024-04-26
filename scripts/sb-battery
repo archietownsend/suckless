@@ -13,7 +13,7 @@ if [ -e "/sys/class/power_supply/BAT0" ]; then
             batstat=" "
         elif [[ $battery -ge 25 ]]; then
             batstat=" "
-        elif [[ $battery -ge 1 ]]; then
+        elif [[ $battery -ge 0 ]]; then
             batstat=" "
         fi
     else
