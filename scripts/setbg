@@ -35,5 +35,5 @@ else
 fi
 
 xwallpaper --zoom "$bgloc"
-cd ~/suckless && sh recompile.sh
+cd ~/.config/suckless && sh recompile.sh
 killall dwm

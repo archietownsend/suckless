@@ -2,7 +2,6 @@
 ![Screenshot](screenshot.png "Screenshot")
 # Info
 - Using xresources a colourscheme will be applied to all programs.
-- .xinitrc is added on the repo if you would like to use it.
 - recompile.sh recompiles all the suckless tools in the directory
 # dwm patches
 - alwayscenter (centre floating windows)

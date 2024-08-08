@@ -37,7 +37,7 @@ static float chscale = 1.0;
 /*
  * word delimiter string
  *
- * More advanced example: L" `'\"()[]{}"
+ * More advanced example: L" '\"()[]{}"
  */
 wchar_t *worddelimiters = L" ";
 
@@ -90,8 +90,8 @@ char *termname = "st-256color";
  *
  *	it#$tabspaces,
  *
- * Secondly make sure your kernel is not expanding tabs. When running `stty
- * -a` »tab0« should appear. You can tell the terminal to not expand tabs by
+ * Secondly make sure your kernel is not expanding tabs. When running stty
+ * -a »tab0« should appear. You can tell the terminal to not expand tabs by
  *  running following command:
  *
  *	stty tabs
@@ -295,6 +295,11 @@ static uint ignoremod = Mod2Mask|XK_SWITCH_MOD;
 static Key key[] = {
 	/* keysym           mask            string      appkey appcursor */
 	{ XK_KP_Home,       ShiftMask,      "\033[2J",       0,   -1},
+	{ XK_Left,  ControlMask, "\033[1;5D", 0, 0},
+	{ XK_Right, ControlMask, "\033[1;5C", 0, 0},
+	{ XK_Up,    ControlMask, "\033[1;5A", 0, 0},
+	{ XK_Down,  ControlMask, "\033[1;5B", 0, 0},
+	{ XK_BackSpace, ControlMask, "\033\177", 0, 0 },/* control navigation */
 	{ XK_KP_Home,       ShiftMask,      "\033[1;2H",     0,   +1},
 	{ XK_KP_Home,       XK_ANY_MOD,     "\033[H",        0,   -1},
 	{ XK_KP_Home,       XK_ANY_MOD,     "\033[1~",       0,   +1},
@@ -352,7 +357,6 @@ static Key key[] = {
 	{ XK_Up,            ShiftMask,      "\033[1;2A",     0,    0},
 	{ XK_Up,            Mod1Mask,       "\033[1;3A",     0,    0},
 	{ XK_Up,         ShiftMask|Mod1Mask,"\033[1;4A",     0,    0},
-	{ XK_Up,            ControlMask,    "\033[1;5A",     0,    0},
 	{ XK_Up,      ShiftMask|ControlMask,"\033[1;6A",     0,    0},
 	{ XK_Up,       ControlMask|Mod1Mask,"\033[1;7A",     0,    0},
 	{ XK_Up,ShiftMask|ControlMask|Mod1Mask,"\033[1;8A",  0,    0},
@@ -361,7 +365,6 @@ static Key key[] = {
 	{ XK_Down,          ShiftMask,      "\033[1;2B",     0,    0},
 	{ XK_Down,          Mod1Mask,       "\033[1;3B",     0,    0},
 	{ XK_Down,       ShiftMask|Mod1Mask,"\033[1;4B",     0,    0},
-	{ XK_Down,          ControlMask,    "\033[1;5B",     0,    0},
 	{ XK_Down,    ShiftMask|ControlMask,"\033[1;6B",     0,    0},
 	{ XK_Down,     ControlMask|Mod1Mask,"\033[1;7B",     0,    0},
 	{ XK_Down,ShiftMask|ControlMask|Mod1Mask,"\033[1;8B",0,    0},
@@ -370,7 +373,6 @@ static Key key[] = {
 	{ XK_Left,          ShiftMask,      "\033[1;2D",     0,    0},
 	{ XK_Left,          Mod1Mask,       "\033[1;3D",     0,    0},
 	{ XK_Left,       ShiftMask|Mod1Mask,"\033[1;4D",     0,    0},
-	{ XK_Left,          ControlMask,    "\033[1;5D",     0,    0},
 	{ XK_Left,    ShiftMask|ControlMask,"\033[1;6D",     0,    0},
 	{ XK_Left,     ControlMask|Mod1Mask,"\033[1;7D",     0,    0},
 	{ XK_Left,ShiftMask|ControlMask|Mod1Mask,"\033[1;8D",0,    0},
@@ -379,7 +381,6 @@ static Key key[] = {
 	{ XK_Right,         ShiftMask,      "\033[1;2C",     0,    0},
 	{ XK_Right,         Mod1Mask,       "\033[1;3C",     0,    0},
 	{ XK_Right,      ShiftMask|Mod1Mask,"\033[1;4C",     0,    0},
-	{ XK_Right,         ControlMask,    "\033[1;5C",     0,    0},
 	{ XK_Right,   ShiftMask|ControlMask,"\033[1;6C",     0,    0},
 	{ XK_Right,    ControlMask|Mod1Mask,"\033[1;7C",     0,    0},
 	{ XK_Right,ShiftMask|ControlMask|Mod1Mask,"\033[1;8C",0,   0},
@@ -523,5 +524,5 @@ static uint selmasks[] = {
 static char ascii_printable[] =
 	" !\"#$%&'()*+,-./0123456789:;<=>?"
 	"@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_"
-	"`abcdefghijklmnopqrstuvwxyz{|}~";
+	"abcdefghijklmnopqrstuvwxyz{|}~";
 
