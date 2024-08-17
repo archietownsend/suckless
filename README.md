@@ -2,7 +2,7 @@
 ![Screenshot](screenshot.png "Screenshot")
 # Info
 - Using xresources a colourscheme will be applied to all programs.
-- recompile.sh recompiles all the suckless tools in the directory
+- recompile.sh script recompiles all the suckless tools in the directory
 # dwm patches
 - alwayscenter (centre floating windows)
 - statusallmons (status bar to all monitors)
