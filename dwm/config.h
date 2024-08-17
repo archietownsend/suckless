@@ -54,7 +54,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -77,7 +77,7 @@ static const Key keys[] = {
         /* modifier                     key        function        argument */
         { MODKEY,                       XK_e,      spawn,	   SHCMD("slock") },
         { MODKEY|ShiftMask,             XK_q,      spawn,	   SHCMD("sh ~/.config/suckless/scripts/powermenu")},
-        { MODKEY,	        	XK_n,      spawn,	   SHCMD(TERMINAL " -e lfub") },
+        { MODKEY,	        	XK_n,      spawn,	   SHCMD(TERMINAL " -e ~/.local/bin/lfub") },
         { MODKEY|ShiftMask,	        XK_n,      spawn,	   SHCMD(TERMINAL " -e newsboat") },
         { MODKEY,                       XK_w,      spawn,	   SHCMD(BROWSER) },
         { MODKEY|ShiftMask,             XK_w,      spawn,      	   SHCMD(BROWSER " --incognito") },
