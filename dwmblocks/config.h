@@ -16,16 +16,11 @@
 // Control whether a trailing delimiter should be appended to the status.
 #define TRAILING_DELIMITER 0
 
-// Define blocks for the status feed as X(cmd, interval, signal).
-#define BLOCKS(X)         \
-    X("sh ~/.config/suckless/scripts/sb-price btc", 60, 7)  \
-    X("sh ~/.config/suckless/scripts/sb-weather", 6000, 12)  \
-    X("sh ~/.config/suckless/scripts/sb-pacman", 2000, 11)  \
-    X("sh ~/.config/suckless/scripts/sb-internet", 5, 4)  \
-    X("sh ~/.config/suckless/scripts/sb-battery", 5, 3)  \
-    X("sh ~/.config/suckless/scripts/sb-volume", 0, 10)  \
-    X("sh ~/.config/suckless/scripts/sb-date", 1, 1)
-
+// Define blocks for the status feed as X(icon, cmd, interval, signal).
+#define BLOCKS(X)             \
+    X("", "sh ~/.config/suckless/scripts/sb-pacman", 2000, 11)  \
+    X("", "sh ~/.config/suckless/scripts/sb-volume", 0, 10)  \
+    X("", "sh ~/.config/suckless/scripts/sb-date", 60, 1)
 
 #endif  // CONFIG_H
 

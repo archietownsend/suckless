@@ -106,9 +106,8 @@ static const Key keys[] = {
 	{ 0, XF86XK_AudioLowerVolume,	spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%+ && wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioRaiseVolume,	spawn,	   SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%- && wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%+; kill -44 $(pidof dwmblocks)") },
         { MODKEY,XK_F1,        		spawn,	   SHCMD("sh ~/.config/suckless/scripts/displayselect")},
-        { MODKEY,XK_F2,         	spawn,	   SHCMD("sh ~/.config/suckless/scripts/mounter")},
-        { MODKEY,XK_F3,         	spawn,	   SHCMD("sh ~/.config/suckless/scripts/unmounter")},
-        { MODKEY,XK_F4,        		spawn,	   SHCMD("xdotool type $(grep -v '^#' ~/.local/share/bookmarks | dmenu -i -l 50 | cut -d' ' -f1)")},
+        { MODKEY,XK_F2,         	spawn,	   SHCMD("sh ~/.config/suckless/scripts/usb")},
+        { MODKEY,XK_F3,        		spawn,	   SHCMD("xdotool type $(grep -v '^#' ~/.local/share/bookmarks | dmenu -i -l 50 | cut -d' ' -f1)")},
         { MODKEY,                       XK_0,      view,           {.ui = ~0 } },
         TAGKEYS(                        XK_1,                      0)
         TAGKEYS(                        XK_2,                      1)
