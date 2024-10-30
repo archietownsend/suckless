@@ -18,9 +18,11 @@
 
 // Define blocks for the status feed as X(icon, cmd, interval, signal).
 #define BLOCKS(X)             \
+    X("", "sh ~/.config/suckless/scripts/sb-weather", 3600, 4)  \
+    X("", "sh ~/.config/suckless/scripts/sb-price btc", 3600, 3)  \
     X("", "sh ~/.config/suckless/scripts/sb-pacman", 2000, 11)  \
     X("", "sh ~/.config/suckless/scripts/sb-volume", 0, 10)  \
-    X("", "sh ~/.config/suckless/scripts/sb-date", 60, 1)
+    X("", "sh ~/.config/suckless/scripts/sb-date", 1, 1)
 
 #endif  // CONFIG_H
 

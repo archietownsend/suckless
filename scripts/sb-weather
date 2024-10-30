@@ -8,7 +8,10 @@ url="${WTTRURL:-wttr.in}"
 weatherreport="${XDG_CACHE_HOME:-$HOME/.cache}/weatherreport"
 
 # Get a weather report from 'wttr.in' and save it locally.
-getforecast() { timeout --signal=1 2s curl -sf "$url/$LOCATION" > "$weatherreport" || exit 1; }
+getforecast() {
+	timeout --signal=1 2s curl -sf "$url/$LOCATION" > "$weatherreport" || exit 1;
+	curl -L https://neige.meteociel.fr/satellite/anim_vis_uk.gif --output ".cache/doppler"
+}
 
 # Forecast should be updated only once a day.
 checkforecast() {
@@ -41,6 +44,7 @@ showweather() {
 case $BLOCK_BUTTON in
 	1) setsid -f st -e sh -c "less -RX $weatherreport" ;;
 	2) getforecast && showweather ;;
+	3) getforecast && st -e mpv --loop ~/.cache/doppler ;;
 	6) setsid -f st -e nvim "$0" ;;
 esac
 

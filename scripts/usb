@@ -1,0 +1,44 @@
+#!/bin/sh
+
+# Mounts and unmounts USB drives
+
+# Add these lines to "sudo.conf" in order run this script from outside the terminal:
+# permit nopass :wheel cmd mount
+# permit nopass :wheel cmd umount
+
+option=$(printf "mount\numount\n" | dmenu -p "mount or umount:")
+
+[ -z "$option" ] && exit 1
+
+if [ "$option" = "mount" ]; then
+    drive=$(lsblk -o NAME,SIZE,LABEL,MOUNTPOINT | grep "sd[a-z][0-9]" | awk '{ print $1, $2, $3 }' | dmenu -p "Select drive to mount:")
+    mp=$(find /mnt /media -maxdepth 1 -type d 2>/dev/null | dmenu -i -p "Mount this drive where?")
+
+    # Check if drive and mountpoint are selected
+    [ -z "$drive" ] || [ -z "$mp" ] && exit 1
+
+    # Attempt to mount the drive
+    if sudo mount "/dev/$drive" "$mp" >/dev/null 2>&1; then
+        notify-send "Mounted $drive to $mp"
+    else
+        notify-send "Failed to mount $drive to $mp"
+    fi
+
+elif [ "$option" = "umount" ]; then
+    # Get the mounted drives and their mount points
+    mount=$(mount | grep "sd[a-z][0-9]" | awk '{ print $1 " " $3 }' | dmenu -p "drive to unmount:")
+
+    # Exit if no drive is selected
+    [ -z "$mount" ] && exit 1
+
+    # Extract the drive and mountpoint from the selected option
+    drive=$(echo "$mount" | awk '{ print $1 }')     # Drive (e.g., /dev/sda1)
+    mountpoint=$(echo "$mount" | awk '{ print $2 }') # Mount point (e.g., /media/usb)
+
+    # Attempt to unmount the drive
+    if sudo umount "$mountpoint"; then
+        notify-send "Unmounted $drive from $mountpoint"
+    else
+        notify-send "Failed to unmount $drive from $mountpoint"
+    fi
+fi

@@ -76,6 +76,7 @@ static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34
 static const Key keys[] = {
         /* modifier                     key        function        argument */
         { MODKEY|ShiftMask,             XK_q,      spawn,	   SHCMD("sh ~/.config/suckless/scripts/powermenu")},
+	{ MODKEY,             		XK_Escape, spawn,          SHCMD("exec slock")},
         { MODKEY,	        	XK_e,      spawn,	   SHCMD(TERMINAL " -e ~/.local/bin/lfub") },
         { MODKEY,	        	XK_n,      spawn,	   SHCMD(TERMINAL " -e newsboat") },
         { MODKEY,                       XK_w,      spawn,	   SHCMD(BROWSER) },

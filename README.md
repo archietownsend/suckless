@@ -3,6 +3,7 @@
 # Info
 - Using xresources a colourscheme will be applied to all programs.
 - recompile.sh script recompiles all the suckless tools in the directory
+- Using [dwmblocks-async](https://github.com/UtkarshVerma/dwmblocks-async)
 # dwm patches
 - alwayscenter (centre floating windows)
 - statusallmons (status bar to all monitors)
