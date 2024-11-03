@@ -18,10 +18,8 @@
  - scrollback
  - alpha (transparency)
  - xresources (colourscheme)
- - external pipe
 # slock patches
 - capscolor
 - xresources
 # Credits
 - Some of the scripts from this repo have been copied and altered from repos made by [Luke Smith](https://github.com/lukesmithxyz) and [Jake@Linux](https://github.com/jdpedersen1).
-- I used [Shourai's ST build](https://github.com/Shourai/st) as a starting base
