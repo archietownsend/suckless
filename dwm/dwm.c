@@ -256,6 +256,7 @@ static pid_t winpid(Window w);
 /* variables */
 static const char broken[] = "broken";
 static char stext[256];
+static void togglebar(const Arg *arg);
 static int statusw;
 static int statussig;
 static pid_t statuspid = -1;
@@ -1976,7 +1977,14 @@ unfocus(Client *c, int setfocus)
 		XDeleteProperty(dpy, root, netatom[NetActiveWindow]);
 	}
 }
-
+void
+togglebar(const Arg *arg)
+{
+	selmon->showbar = !selmon->showbar;
+	updatebarpos(selmon);
+	XMoveResizeWindow(dpy, selmon->barwin, selmon->wx, selmon->by, selmon->ww, bh);
+	arrange(selmon);
+}
 void
 unmanage(Client *c, int destroyed)
 {
