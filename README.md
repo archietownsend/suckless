@@ -6,11 +6,8 @@
 - Using [dwmblocks-async](https://github.com/UtkarshVerma/dwmblocks-async)
 # dwm patches
 - alwayscenter (centre floating windows)
-- statusallmons (status bar to all monitors)
-- uselessgap (gaps between windows)
-- grid layout
+- vanitygaps (gaps between windows)
 - scratchpads
-- dwm-6.2-urg-border (urgent border colors needed for pywall)
 - warp (moves cursor to selected window)
 - swallow (hides terminal when opening applications, like mpv)
 - statuscmd (allows dwmblocks to be clickable)
