@@ -15,7 +15,7 @@ denom="${1##*-}"
 name="${2:-$1}"
 icon="${3:-}"
 case "$denom" in
-	"$target"|usd) denom="usd"; symb="$" ;;
+	"$target"|gbp) denom="gbp"; symb="£" ;;
 	gbp) symb="£" ;;
 	eur) symb="€" ;;
 	BTC) symb="" ;;
@@ -37,7 +37,7 @@ updateprice() { curl -sf \
 	updateme="1"
 
 case $BLOCK_BUTTON in
-	1) setsid "$TERMINAL" -e less -Srf "$chartfile" ;;
+	1) setsid "st" -e less -Srf "$chartfile" ;;
 	2) notify-send -u low "$icon Updating..." "Updating $name price..." ; updateme="1" ; showupdate="1" ;;
 	3) uptime="$(date -d "$filestat" '+%D at %T' | sed "s|$(date '+%D')|Today|")"
 		notify-send "$icon $name module" "\- <b>Exact price: \$$(cat "$pricefile")</b>

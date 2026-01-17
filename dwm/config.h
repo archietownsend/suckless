@@ -5,7 +5,7 @@
 /* Constants */
 #define TERMINAL "st"
 #define TERMCLASS "st"
-#define BROWSER "brave --password-store=basic"
+#define BROWSER "firefox"
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -98,9 +98,10 @@ static const Key keys[] = {
         { MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("sh ~/.config/suckless/scripts/powermenu")},
         { MODKEY,                       XK_Escape, spawn,          SHCMD("exec slock")},
         { MODKEY,                       XK_e,      spawn,          SHCMD(TERMINAL " -e ~/.local/bin/lfub") },
-        { MODKEY,                       XK_n,      spawn,          SHCMD(TERMINAL " -e newsboat") },
-        { MODKEY,                       XK_w,      spawn,          SHCMD(BROWSER) },
-        { MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD(BROWSER " --incognito") },
+        { MODKEY,                       XK_n,      spawn,          SHCMD(TERMINAL " -e newsraft") },
+	{ MODKEY,			XK_a,      togglegaps,     {0} },
+        { MODKEY,             		XK_w,      spawn,          SHCMD(BROWSER) },
+        { MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD(BROWSER " --private-window") },
         { MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
         { MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
         { MODKEY|ShiftMask,             XK_Return, togglescratch,  {.v = scratchpadcmd } },
@@ -127,9 +128,9 @@ static const Key keys[] = {
         { 0, XF86XK_AudioMute,          spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
         { 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%+ && wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-; kill -44 $(pidof dwmblocks)") },
         { 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%- && wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%+; kill -44 $(pidof dwmblocks)") },
-        { MODKEY,XK_F1,                 spawn,     SHCMD("sh ~/.config/suckless/scripts/displayselect")},
+        { MODKEY,XK_F3,                 spawn,     SHCMD("sh ~/.config/suckless/scripts/displayselect")},
         { MODKEY,XK_F2,                 spawn,     SHCMD("sh ~/.config/suckless/scripts/usb")},
-        { MODKEY,XK_F3,                 spawn,     SHCMD("xdotool type $(grep -v '^#' ~/.local/share/bookmarks | dmenu -i -l 50 | cut -d' ' -f1)")},
+        { MODKEY,XK_F1,                 spawn,     SHCMD("xdotool type $(grep -v '^#' ~/.local/share/bookmarks | dmenu -i -l 50 | cut -d' ' -f1)")},
         { MODKEY,                       XK_0,      view,           {.ui = ~0 } },
         TAGKEYS(                        XK_1,                      0)
         TAGKEYS(                        XK_2,                      1)
