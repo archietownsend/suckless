@@ -429,7 +429,8 @@ arrange(Monitor *m)
 void
 arrangemon(Monitor *m)
 {
-	strncpy(m->ltsymbol, m->lt[m->sellt]->symbol, sizeof m->ltsymbol);
+	strncpy(m->ltsymbol, m->lt[m->sellt]->symbol, sizeof(m->ltsymbol) - 1);
+	m->ltsymbol[sizeof(m->ltsymbol) - 1] = '\0';
 	if (m->lt[m->sellt]->arrange)
 		m->lt[m->sellt]->arrange(m);
 }
@@ -659,6 +660,9 @@ configurenotify(XEvent *e)
 
 	/* TODO: updategeom handling sucks, needs to be simplified */
 	if (ev->window == root) {
+		if (ev->width <= 0 || ev->height <= 0)
+			return;
+
 		dirty = (sw != ev->width || sh != ev->height);
 		sw = ev->width;
 		sh = ev->height;
@@ -746,7 +750,8 @@ createmon(void)
 	m->gappov = gappov;
 	m->lt[0] = &layouts[0];
 	m->lt[1] = &layouts[1 % LENGTH(layouts)];
-	strncpy(m->ltsymbol, layouts[0].symbol, sizeof m->ltsymbol);
+	strncpy(m->ltsymbol, layouts[0].symbol, sizeof(m->ltsymbol) - 1);
+	m->ltsymbol[sizeof(m->ltsymbol) - 1] = '\0';
 	return m;
 }
 
@@ -986,15 +991,15 @@ focusstack(const Arg *arg)
 Atom
 getatomprop(Client *c, Atom prop)
 {
-	int di;
+	int format;
 	unsigned long nitems, dl;
 	unsigned char *p = NULL;
 	Atom da, atom = None;
 
 	if (XGetWindowProperty(dpy, c->win, prop, 0L, sizeof atom, False, XA_ATOM,
-		&da, &di, &nitems, &dl, &p) == Success && p) {
-		if (nitems > 0)
-			atom = *(Atom *)p;
+		&da, &format, &nitems, &dl, &p) == Success && p) {
+		if (nitems > 0 && format == 32)
+			atom = *(long *)p;
 		XFree(p);
 	}
 	return atom;
@@ -1044,10 +1049,10 @@ getstate(Window w)
 	Atom real;
 
 	if (XGetWindowProperty(dpy, w, wmatom[WMState], 0L, 2L, False, wmatom[WMState],
-		&real, &format, &n, &extra, (unsigned char **)&p) != Success)
+		&real, &format, &n, &extra, &p) != Success)
 		return -1;
-	if (n != 0)
-		result = *p;
+	if (n != 0 && format == 32)
+		result = *(long *)p;
 	XFree(p);
 	return result;
 }
@@ -1066,8 +1071,9 @@ gettextprop(Window w, Atom atom, char *text, unsigned int size)
 		return 0;
 	if (name.encoding == XA_STRING) {
 		strncpy(text, (char *)name.value, size - 1);
-	} else if (XmbTextPropertyToTextList(dpy, &name, &list, &n) >= Success && n > 0 && *list) {
-		strncpy(text, *list, size - 1);
+	} else if (XmbTextPropertyToTextList(dpy, &name, &list, &n) >= Success) {
+		if (n > 0 && *list)
+			strncpy(text, *list, size - 1);
 		XFreeStringList(list);
 	}
 	text[size - 1] = '\0';
@@ -1593,6 +1599,8 @@ sendmon(Client *c, Monitor *m)
 	c->tags = m->tagset[m->seltags]; /* assign tags of target monitor */
 	attach(c);
 	attachstack(c);
+	if (c->isfullscreen)
+		resizeclient(c, m->mx, m->my, m->mw, m->mh);
 	focus(NULL);
 	arrange(NULL);
 }
@@ -1634,12 +1642,10 @@ sendevent(Client *c, Atom proto)
 void
 setfocus(Client *c)
 {
-	if (!c->neverfocus) {
+	if (!c->neverfocus)
 		XSetInputFocus(dpy, c->win, RevertToPointerRoot, CurrentTime);
-		XChangeProperty(dpy, root, netatom[NetActiveWindow],
-			XA_WINDOW, 32, PropModeReplace,
-			(unsigned char *) &(c->win), 1);
-	}
+	XChangeProperty(dpy, root, netatom[NetActiveWindow], XA_WINDOW, 32,
+		PropModeReplace, (unsigned char *)&c->win, 1);
 	sendevent(c, wmatom[WMTakeFocus]);
 }
 
@@ -1844,11 +1850,17 @@ void
 spawn(const Arg *arg)
 {
 	struct sigaction sa;
+	pid_t pid;
 
 	if (arg->v == dmenucmd)
-		dmenumon[0] = '0' + selmon->num;
+		snprintf(dmenumon, sizeof(dmenumon), "%d", selmon->num);
 	selmon->tagset[selmon->seltags] &= ~scratchtag;
-	if (fork() == 0) {
+
+	if ((pid = fork()) == -1) {
+		fprintf(stderr, "dwm: fork failed: %s\n", strerror(errno));
+		return;
+	}
+	if (pid == 0) {
 		if (dpy)
 			close(ConnectionNumber(dpy));
 		setsid();
@@ -2157,7 +2169,8 @@ updatenumlockmask(void)
 	XModifierKeymap *modmap;
 
 	numlockmask = 0;
-	modmap = XGetModifierMapping(dpy);
+	if (!(modmap = XGetModifierMapping(dpy)))
+		return;
 	for (i = 0; i < 8; i++)
 		for (j = 0; j < modmap->max_keypermod; j++)
 			if (modmap->modifiermap[i * modmap->max_keypermod + j]
@@ -2176,32 +2189,32 @@ updatesizehints(Client *c)
 		/* size is uninitialized, ensure that size.flags aren't used */
 		size.flags = PSize;
 	if (size.flags & PBaseSize) {
-		c->basew = size.base_width;
-		c->baseh = size.base_height;
+		c->basew = MAX(0, size.base_width);
+		c->baseh = MAX(0, size.base_height);
 	} else if (size.flags & PMinSize) {
-		c->basew = size.min_width;
-		c->baseh = size.min_height;
+		c->basew = MAX(0, size.min_width);
+		c->baseh = MAX(0, size.min_height);
 	} else
 		c->basew = c->baseh = 0;
 	if (size.flags & PResizeInc) {
-		c->incw = size.width_inc;
-		c->inch = size.height_inc;
+		c->incw = MAX(0, size.width_inc);
+		c->inch = MAX(0, size.height_inc);
 	} else
 		c->incw = c->inch = 0;
 	if (size.flags & PMaxSize) {
-		c->maxw = size.max_width;
-		c->maxh = size.max_height;
+		c->maxw = MAX(0, size.max_width);
+		c->maxh = MAX(0, size.max_height);
 	} else
 		c->maxw = c->maxh = 0;
 	if (size.flags & PMinSize) {
-		c->minw = size.min_width;
-		c->minh = size.min_height;
+		c->minw = MAX(0, size.min_width);
+		c->minh = MAX(0, size.min_height);
 	} else if (size.flags & PBaseSize) {
-		c->minw = size.base_width;
-		c->minh = size.base_height;
+		c->minw = MAX(0, size.base_width);
+		c->minh = MAX(0, size.base_height);
 	} else
 		c->minw = c->minh = 0;
-	if (size.flags & PAspect) {
+	if ((size.flags & PAspect) && size.min_aspect.x > 0 && size.max_aspect.y > 0) {
 		c->mina = (float)size.min_aspect.y / size.min_aspect.x;
 		c->maxa = (float)size.max_aspect.x / size.max_aspect.y;
 	} else

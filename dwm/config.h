@@ -1,6 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
-#include "/home/archie/.cache/wal/colors-wal-dwm.h"
+#include "colors-wal-dwm.h"
 
 /* Constants */
 #define TERMINAL "st"
@@ -88,8 +88,8 @@ static const Layout layouts[] = {
 #define STATUSBAR "dwmblocks"
 
 /* commands */
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run"};
+static char dmenumon[8]; /* component of dmenucmd, manipulated in spawn() */
+static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[]  = { TERMINAL, NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
