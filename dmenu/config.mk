@@ -19,8 +19,11 @@ FREETYPEINC = /usr/include/freetype2
 #FREETYPEINC = $(X11INC)/freetype2
 #MANPREFIX = ${PREFIX}/man
 
+# pywal colours (home of the user running make, even under sudo)
+WALDIR = $(shell getent passwd "$${SUDO_USER:-$$(id -un)}" | cut -d: -f6)/.cache/wal
+
 # includes and libs
-INCS = -I$(X11INC) -I$(FREETYPEINC)
+INCS = -I$(X11INC) -I$(FREETYPEINC) -I$(WALDIR)
 LIBS = -L$(X11LIB) -lX11 $(XINERAMALIBS) $(FREETYPELIBS)
 
 # flags
