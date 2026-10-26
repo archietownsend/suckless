@@ -1,0 +1,10 @@
+# build output
+*.o
+*.orig
+*.rej
+/dmenu/dmenu
+/dmenu/stest
+/dwm/dwm
+/slock/slock
+/st/st
+/dwmblocks/build/
